@@ -6,6 +6,7 @@ from fastapi import Request
 from myservice.logger import logger
 
 
+# middleware to log process time for each request along with a uuid to trace logs for individual requests
 async def log_timed_requests(request: Request, call_next):
     trace_id = request.headers.get("x-trace-id") or str(uuid.uuid4())
     request.state.trace_id = trace_id

@@ -33,3 +33,5 @@ class AppException:
             """
             status_code = 404
             CustomException.__init__(self, status_code, content)
+
+    # add more custom exception classes here

@@ -18,11 +18,13 @@ app = FastAPI(
 )
 
 
+# add middleware to log process time for each request
 @app.middleware("http")
 async def log_requests(request: Request, call_next):
     return await log_timed_requests(request, call_next)
 
 
+# add custom exception handler
 @app.exception_handler(CustomException)
 async def custom_exception_handler(request, e):
     return await custom_app_exception_handler(request, e)
@@ -30,6 +32,7 @@ async def custom_exception_handler(request, e):
 
 logger.info("Starting APP")
 
+# include all routers
 for r in ROUTERS:
     app.include_router(
         r,
