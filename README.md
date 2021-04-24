@@ -22,7 +22,15 @@ This is a basic FastAPI template suitable for a small to medium scale service/ap
     poetry remove <package_name>
     poetry remove requests
     ```
-8. To run the service/application, you can run the below command from the `<app_directory>` and access the same over `http://localhost:8081`
+8. To run the service/application, you can run the below command and access the same over `http://localhost:8081`
     ```bash
-    uvicorn --reload --host=0.0.0.0 --port=8081 main:app
+    # Make sure to replace <app_directory> with your actual directory name
+    uvicorn --reload --host=0.0.0.0 --port=8081 <app_directory>.main:app
+    uvicorn --reload --host=0.0.0.0 --port=8081 myservice.main:app
+    ```
+9. To run the tests and get the test coverage report, you can run the below command from the root directory
+    ```bash
+    # Make sure to replace <app_directory> with your actual directory name
+    pytest --cov=<app_directory>
+    pytest --cov=myservice
     ```
