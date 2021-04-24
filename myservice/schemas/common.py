@@ -4,12 +4,7 @@ from pydantic import BaseModel
 from pydantic import Field
 
 from myservice.config import config
-
-
-# function to convert a snake case string into a camel case
-def camelcase(input_string):
-    parts = iter(input_string.split("_"))
-    return next(parts) + "".join(i.title() for i in parts)
+from myservice.utils.helpers import camelcase
 
 
 class CamelCaseModel(BaseModel):
