@@ -1,6 +1,7 @@
 import uvicorn
 from fastapi import FastAPI
 from fastapi import Request
+from fastapi.middleware.cors import CORSMiddleware
 
 from myservice.config import config
 from myservice.logger import logger
@@ -22,6 +23,16 @@ app = FastAPI(
 @app.middleware("http")
 async def log_requests(request: Request, call_next):
     return await log_timed_requests(request, call_next)
+
+
+# add middleware for cors configuration
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=config.cors_allowed_origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 # add custom exception handler

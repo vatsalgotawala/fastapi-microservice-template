@@ -1,4 +1,5 @@
 from enum import Enum
+from typing import List
 
 from pydantic import BaseSettings
 
@@ -17,6 +18,7 @@ class Settings(BaseSettings):
     openapi_url: str = "/docs/openapi.json"
     swagger_docs_url: str = f"/{app_name}/api/{app_version}/docs"
     log_level: LogLevelEnum = LogLevelEnum.info
+    cors_allowed_origins: List[str] = ["*"]
     # add more environment variables here
 
 
