@@ -3,8 +3,8 @@ This is a basic FastAPI template suitable for a small to medium scale service/ap
 
 ## Usage
 **To get started with your service/application using this template, follow the below steps:**
-1. Install [Python3.9](https://www.python.org/downloads/)
-2. Install [Poetry](https://pypi.org/project/poetry/) which is used for dependency management
+1. Install [python3.9](https://www.python.org/downloads/)
+2. Install [poetry](https://pypi.org/project/poetry/) which is used for dependency management. Optionally, install [pre-commit](https://pre-commit.com/) to run git hooks
 3. Refactor (along with its references) the directory `myservice` and rename it to be a suitable package name for your service/application. We will refer to this directory as <app_directory>
 4. Update the name (to be the same as <app_directory> name you set in step 3) and description for your service/application in the `pyproject.toml` file
 5. Update the name (to be the same as <app_directory> name you set in step 3), title and description for your service/application in the `<app_directory>/config.py` file
@@ -22,13 +22,17 @@ This is a basic FastAPI template suitable for a small to medium scale service/ap
     poetry remove <package_name>
     poetry remove requests
     ```
-8. To run the service/application, you can run the below command and access the same over `http://localhost:8081`
+8. Optionally, run the below command from the root directory to set up the git hook scripts using the `.pre-commit-config.yaml` file containing some pre-configured hooks
+    ```bash
+    pre-commit install
+    ```
+9. To run the service/application, you can run the below command and access the same over `http://localhost:8081`
     ```bash
     # Make sure to replace <app_directory> with your actual directory name
     uvicorn --reload --host=0.0.0.0 --port=8081 <app_directory>.main:app
     uvicorn --reload --host=0.0.0.0 --port=8081 myservice.main:app
     ```
-9. To run the tests and get the test coverage report, you can run the below command from the root directory
+10. To run the tests and get the test coverage report, you can run the below command from the root directory
     ```bash
     # Make sure to replace <app_directory> with your actual directory name
     pytest --cov=<app_directory>
