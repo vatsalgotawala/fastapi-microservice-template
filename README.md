@@ -1,5 +1,5 @@
 # fastapi-microservice-template
-[![Unit Tests](https://github.com/vatsalgotawala/fastapi-microservice-template/actions/workflows/unit_tests.yaml/badge.svg)](https://github.com/vatsalgotawala/fastapi-microservice-template/actions/workflows/unit_tests.yaml) ![badge](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/vatsalgotawala/c9b21a3c7d5038f5ddd64ac4f27ca416/raw/fastapi-microservice-template-coverage.json) ![badge](https://img.shields.io/github/license/vatsalgotawala/fastapi-microservice-template?color=success&label=License)
+[![Unit Tests](https://github.com/vatsalgotawala/fastapi-microservice-template/actions/workflows/unit_tests.yaml/badge.svg)](https://github.com/vatsalgotawala/fastapi-microservice-template/actions/workflows/unit_tests.yaml) ![badge](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/vatsalgotawala/c9b21a3c7d5038f5ddd64ac4f27ca416/raw/fastapi-microservice-template-coverage.json) ![badge](https://img.shields.io/github/license/vatsalgotawala/fastapi-microservice-template?color=5cd65c&label=License&labelColor=36404a&style=plastic&logo=github&logoColor=a6a6a6)
 
 This is a basic FastAPI template suitable for a small to medium scale service/application which you can use as a base for your service/application and start adding new routes for RestAPIs.
 
