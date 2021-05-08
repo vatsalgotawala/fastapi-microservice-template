@@ -13,7 +13,7 @@ async def test_healthcheck():
     async with AsyncClient(app=app, base_url="http://test") as ac:
         response = await ac.get(f"{config.openapi_prefix}/healthcheck")
     assert response.status_code == 200
-    assert response.json() == {"status": "down"}
+    assert response.json() == {"status": "up"}
 
 
 def test_versioninfo():
