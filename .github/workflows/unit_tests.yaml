@@ -40,4 +40,4 @@ jobs:
           filename: fastapi-microservice-template-coverage.json
           label: Coverage
           message: ${{ env.COVERAGE_PERCENT }}
-          color: green
+          color: success
