@@ -29,8 +29,9 @@ jobs:
         run: |
           pytest --cov=myservice
           coverage json
-          COVERAGE_PERCENT=$(cat coverage.json | python -c "import sys, json; print(json.load(sys.stdin)[\"totals\"][\"percent_covered\"])")
-          echo "COVERAGE_PERCENT" >> $GITHUB_ENV
+          COVERAGE=$(cat coverage.json | python -c "import sys, json; print(json.load(sys.stdin)[\"totals\"][\"percent_covered\"])")
+          echo $COVERAGE
+          echo "COVERAGE_PERCENT=$(echo ${COVERAGE})" >> $GITHUB_ENV
       - name: Create Coverage Badge
         uses: schneegans/dynamic-badges-action@v1.0.0
         with:
