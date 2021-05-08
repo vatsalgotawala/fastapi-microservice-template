@@ -44,9 +44,11 @@ htmlcov/
 .cache
 nosetests.xml
 coverage.xml
+coverage.json
 *,cover
 .hypothesis/
 .pytest_cache
+junit
 
 # pyenv
 .python-version

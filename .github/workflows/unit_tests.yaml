@@ -1,0 +1,43 @@
+name: Unit Tests
+
+on:
+  push:
+    branches:
+      - '**'
+      - '!main'
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  tests:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+      - name: Install dependencies
+        run: |
+          pip install --no-cache-dir --compile --upgrade pip poetry
+          poetry config virtualenvs.create false \
+              && poetry install
+      - name: Run tests with pytest
+        run: |
+          pytest --cov=myservice
+          coverage json
+          COVERAGE=$(cat coverage.json | python -c "import sys, json; print(json.load(sys.stdin)[\"totals\"][\"percent_covered\"])")
+          echo $COVERAGE
+          echo "COVERAGE_PERCENT=$(echo ${COVERAGE})" >> $GITHUB_ENV
+      - name: Create Coverage Badge
+        uses: schneegans/dynamic-badges-action@v1.0.0
+        with:
+          auth: ${{ secrets.GIST_SECRET }}
+          gistID: c9b21a3c7d5038f5ddd64ac4f27ca416
+          filename: fastapi-microservice-template-coverage.json
+          label: Coverage
+          message: ${{ env.COVERAGE_PERCENT }}
+          color: success
