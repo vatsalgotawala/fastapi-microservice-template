@@ -1,0 +1,22 @@
+version: "3.8"
+
+services:
+  api:
+    image: fastapi-ms-template  # TODO: Update the image name as per your service/application
+    build:
+      context: .
+      target: debug-image
+      dockerfile: Dockerfile
+    volumes:
+      - .:/code
+    ports:
+      - "8081:8081"
+    environment:  # TODO: Update the environment variables as needed by your service/application
+      - APP_NAME=myservice
+      - APP_VERSION=v1
+      - OPENAPI_PREFIX=/myservice/api/v1
+      - OPENAPI_URL=/docs/openapi.json
+      - SWAGGER_DOCS_URL=/myservice/api/v1/docs
+      - LOG_LEVEL=debug
+      - CORS_ALLOWED_ORIGINS=["*"]
+    command: uvicorn --reload --host=0.0.0.0 --port=8081 myservice.main:app
