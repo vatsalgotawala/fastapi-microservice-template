@@ -1,0 +1,27 @@
+name: test coverage
+
+on:
+  push:
+    branches: [ ci/github_actions ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+      - name: Install dependencies
+        run: |
+          pip install --no-cache-dir --compile --upgrade pip poetry
+          poetry config virtualenvs.create false \
+              && poetry install
+      - name: Run tests with pytest
+        run: |
+          pytest --doctest-modules --junit-xml=junit/test-results.xml --cov=myservice --cov-report=xml --cov-report=html
